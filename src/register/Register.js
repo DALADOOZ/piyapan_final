@@ -9,7 +9,6 @@ export default class Register extends Component{
             idkey:"",
             firstname:"",
             lastname:"",
-            email:localStorage.getItem("user").email
         }
         this.handleChang = this.handleChang.bind(this);
         this.handleClicked = this.handleClicked.bind(this);
@@ -25,14 +24,12 @@ export default class Register extends Component{
             idkey:this.state.idkey,
             firstname:this.state.firstname,
             lastname:this.state.lastname,
-            email:JSON.parse(localStorage.getItem('user')).email
         }
         axios.post(url,data)
         this.setState({
             idkey:"",
             firstname:"",
             lastname:"",
-            email:""
         });
     }
 
@@ -57,9 +54,9 @@ export default class Register extends Component{
                         <label className="text-white"  htmlFor="id">ID</label>
                         <input type="text" className="form-control" size="10" id="idkey" onChange={this.handleChang} value={this.state.idkey}/>
                     </div>
-                    <a href="/Showdata">
+
                     <button type="button" className="btn btn-primary" onClick={this.handleClicked}>Submit</button>
-                    </a>
+                    
                 </form>
             </div>
         );

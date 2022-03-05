@@ -59,7 +59,6 @@ export default class Showdata extends Component{
             idkey:user.id,
             firstname:user.firstname,
             lastname:user.lastname,
-            email:user.email
         })
     }
     handleChang = (e) => {
@@ -72,7 +71,6 @@ export default class Showdata extends Component{
             idkey:this.state.idkey,
             firstname:this.state.firstname,
             lastname:this.state.lastname,
-            email:this.state.email
         }
         axios.put(url,data)
     }
@@ -84,7 +82,6 @@ export default class Showdata extends Component{
             idkey:this.state.idkey,
             firstname:this.state.firstname,
             lastname:this.state.lastname,
-            email:this.state.email
         }
         axios.put(url,data)
         this.setState({
@@ -92,7 +89,6 @@ export default class Showdata extends Component{
             idkey:"",
             firstname:"",
             lastname:"",
-            email:""
         });
 	this.closeModal();
         setTimeout(()=>{this.componentDidMount()},1)
@@ -112,7 +108,6 @@ export default class Showdata extends Component{
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Email</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,7 +118,6 @@ export default class Showdata extends Component{
                                             <td>{user.id}</td>
                                             <td>{user.firstname}</td>
                                             <td>{user.lastname}</td>
-                                            <td>{user.email}</td>
                                             <td><button type="button" class="btn btn-warning" onClick={()=>this.call(user)}>Edit</button></td>
                                             <td><button type="button" class="btn btn-danger"  onClick={()=>this.onDelete(user)}>Delet</button></td>
                                             <div className="box">

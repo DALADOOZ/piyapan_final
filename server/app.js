@@ -18,10 +18,10 @@ app.use(body());
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 const db = mysql.createConnection({
-    host: '172.29.112.1',
-    user: 'mai',
+    host: '172.21.128.1',
+    user: 'dooz',
     password: '1234',
-    database: 'testing'
+    database: 'final'
 });
 // show data
 app.get('/data', function(req,res){
@@ -60,7 +60,6 @@ app.post('/data', function(req, res){
         id:req.body.idkey,
         firstname:req.body.firstname,
         lastname:req.body.lastname,
-        email:req.body.email
     };
     let sql = 'INSERT INTO users SET ?';
     db.query(sql, data, (err, result)=>{

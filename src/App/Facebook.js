@@ -6,6 +6,7 @@ import './style.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Register from "../register/Register";
 import Showdata from "../showdata/Showdata";
+import { Link } from 'react-router-dom';
 
 export default class Facebook extends Component {
   state = {
@@ -17,8 +18,8 @@ export default class Facebook extends Component {
   };
   responseFacebook = response => {
     // console.log(response);
-    
-    localStorage.setItem('user',JSON.stringify(response))
+
+    localStorage.setItem('user', JSON.stringify(response))
     this.setState({
       isLoggedIn: true,
       userID: response.userID,
@@ -28,7 +29,7 @@ export default class Facebook extends Component {
     });
   };
 
-  componentClicked = () => console.log("Login facebook successfuly");
+  componentClicked = () => console.log("Login facebook succesfuly");
 
   logoutFacebook = () => {
     localStorage.removeItem('user')
@@ -44,7 +45,7 @@ export default class Facebook extends Component {
   render() {
     let fbContent;
 
-    if (localStorage.getItem('user') !== null) {
+    if (localStorage.getItem('user')!== null) {
       fbContent = (
         <div
           style={{
@@ -55,12 +56,12 @@ export default class Facebook extends Component {
             padding: "25px",
             position: 'absolute',
             zIndex: 99,
-            backgroundImage: 'linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(11,94,136,1) 94%)'
+            backgroundImage: 'linear-gradient(45deg, rgba(218, 132, 230, 0.84) 0%, rgba(179, 0, 89, 1) 83%)'
           }}
         >
-          <img src={JSON.parse(localStorage.getItem('user')).picture.data.url} alt />
-          <h2>Welcome {""}{JSON.parse(localStorage.getItem('user')).name}</h2>
- 	  email: {JSON.parse(localStorage.getItem('user')).email}
+          <img src={JSON.parse(localStorage.getItem('user')).picture.data.url} alt/>
+          <h2>Welcome {" "}{JSON.parse(localStorage.getItem('user')).name}</h2>
+       email: {JSON.parse(localStorage.getItem('user')).email}
           <div className="my-3"><a className="btn btn-danger" href="/" onClick={this.logoutFacebook}>Logout</a></div>
           <BrowserRouter>
             <br /><br /><div className="btn-group btn-group-lg"><ButtonRegister /><ButtonShowdata /></div>
@@ -69,6 +70,7 @@ export default class Facebook extends Component {
               <Route path='/showdata' component={Showdata} />
             </Switch>
           </BrowserRouter>
+
         </div>
       );
     } else {
@@ -81,7 +83,7 @@ export default class Facebook extends Component {
           }}
         >
           <FacebookLogin
-            appId="1583411212019343"
+            appId="708663670301205"
             autoLoad={false}
             fields="name,email,picture"
             onClick={this.componentClicked}
